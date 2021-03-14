@@ -5,38 +5,29 @@ It's ok if you don't understand how to read files.
 import csv
 
 
-
-text_senders_receivers = set()
+callers = set()
+other_numbers = set()
 
 with open('texts.csv', 'r') as f:
     reader = csv.reader(f)
     texts = list(reader)
 
     for text in texts:
-        text_senders_receivers.add(text[0])
-        text_senders_receivers.add(text[1])
-
-possible_telemarketers = set()
+        other_numbers.add(text[0])
+        other_numbers.add(text[1])
 
 with open('calls.csv', 'r') as f:
     reader = csv.reader(f)
     calls = list(reader)
-
-    callers = set()
-    receivers = set()
     
     for call in calls:
         callers.add(call[0])
-        receivers.add(call[1])
+        other_numbers.add(call[1])
 
-    for caller in callers:
-        if not caller in receivers and not caller in text_senders_receivers:
-            possible_telemarketers.add(caller)
+possible_telemarketers = callers - other_numbers
 
 message = 'These numbers could be telemarketers:'
-print(message, *sorted(possible_telemarketers), sep='\n')
-    
-    
+print(message, *sorted(possible_telemarketers), sep='\n')  
 """
 TASK 4:
 The telephone company want to identify numbers that might be doing

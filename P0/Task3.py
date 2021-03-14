@@ -19,7 +19,8 @@ def extract_areacode(phonenumber):
         ending_bracket = phonenumber.index(')')
         return phonenumber[1: ending_bracket]
     elif starting_letter in ('7', '8', '9'):
-        return phonenumber.split(' ')[0]
+        part_before_space = phonenumber.split(' ')[0]
+        return part_before_space[:4]
     elif phonenumber.startswith('140'):
         return '140'
     else:
