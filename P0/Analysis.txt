@@ -1,0 +1,92 @@
+Task0:
+
+We're getting first item of texts list and last item of calls list:
+   sender, receiver, time = texts[0]
+   caller, receiver, time, duration = calls[-1]
+
+Since list get item operation is constant, 1. So time complexity is O(1).
+
+
+Task1:
+
+We're visiting each text and call record once for adding it to set:
+for text in texts:   ->  n
+   unique_telephones.add(text[0])
+   ...
+
+for call in calls:   ->  n
+   unique_telephones.add(call[0])
+   ...
+
+Getting length of a set is constant: len(unique_telephones) -> 1
+
+adding all costs together:
+     = n + n + 1
+     = 2n + 1
+     = O(n)
+
+
+Task2:
+
+We're visiting each calls record and adding it to call_times dictionary:
+  for call in calls: -> n
+  ...
+
+Then we get the maximum call time from call_times dictionary by visiting each dictionary item. In the worst case the call_times dict size will be equal to calls size. 
+
+  for caller, duration in call_times.items(): -> n
+  ...
+
+adding all costs together:
+     = n + n
+     = 2n
+     = O(n)
+
+
+Task3:
+
+We're visiting each calls record and extracting area codes from it and counting Banglore calls:
+
+ for call in calls: -> n
+    ...
+    ending_bracket = phonenumber.index(')') # finding index in list is: O(k) where k = len(phone number)
+    phonenumber[1: ending_bracket]  # slicing string is: O(k) where k = len(phone number)
+    ...
+
+In the worst case, where all the calls are made from Bangalore to Bangalore land lines:
+
+= n * (k + k)
+= 2nk
+    
+Sorting the area codes set at the end is: nlogn
+
+= 2nk + nlogn
+= n + nlogn
+= O(nlogn) 
+
+
+Task4:
+
+Adding all text and calls senders and receivers:
+for text in texts: ->  n
+for call in calls: ->  n
+ 
+For all callers, we check if the callers received calls or texts. Lookup in a set is aconstant operation:
+
+  for caller in callers: -> n
+    if not caller in receivers and not caller in text_senders_receivers -> 1
+  ...
+  ...
+
+= n + n + n
+= 3n
+
+Sorting the telemarketers numbers at the end is: nlogn
+
+= 3n + nlogn
+= O(nlogn)
+
+
+
+
+  
