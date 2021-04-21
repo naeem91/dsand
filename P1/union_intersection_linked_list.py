@@ -155,8 +155,23 @@ if __name__ == "__main__":
         assert u_output == expected_union_set
         assert i_output == expected_intersection_set
 
+    def test_case4():
+        element_1 = []
+        element_2 = []
 
-    for i, test in enumerate([test_case1, test_case2, test_case3]):
+        linked_list_1 = _create_linked_list(element_1)
+        linked_list_2 = _create_linked_list(element_2)
+
+        expected_union_set = set(element_1) | set(element_2)
+        expected_intersection_set = set(element_1) & set(element_2)
+
+        u_output = {item.value for item in union(linked_list_1, linked_list_2)}
+        i_output = {item.value for item in intersection(linked_list_1, linked_list_2)}
+
+        assert u_output == expected_union_set
+        assert i_output == expected_intersection_set
+
+    for i, test in enumerate([test_case1, test_case2, test_case3, test_case4]):
         try:
             test()
             print(f'Test {i+1}: Passed')

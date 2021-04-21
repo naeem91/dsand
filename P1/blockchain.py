@@ -37,6 +37,9 @@ class BlockChain:
         self.tail = self.head
 
     def add(self, data):
+        if type(data) != str:
+            raise ValueError('Invalid data for block')
+
         prev_hash = self.tail.hash if self.tail else None
         new_block = Block(datetime.utcnow().strftime('%H:%M %m-%d-%Y'), data, prev_hash)
 
@@ -92,8 +95,25 @@ if __name__ == "__main__":
 
         assert sha.hexdigest() != tempered_block.hash
 
+    def test_case3():
+        block_chain = BlockChain()
+        try:
+            block_chain.add(None)
+        except ValueError:
+            assert True
+        else:
+            raise AssertionError
 
-    for i, test in enumerate([test_case1, test_case2,]):
+    def test_case4():
+        block_chain = BlockChain()
+        try:
+            block_chain.add(BlockChain())
+        except ValueError:
+            assert True
+        else:
+            raise AssertionError
+
+    for i, test in enumerate([test_case1, test_case2, test_case3, test_case4]):
         try:
             test()
             print(f'Test {i+1}: Passed')

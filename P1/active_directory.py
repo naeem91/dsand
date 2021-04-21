@@ -92,7 +92,9 @@ class UserGroupsCache:
 
 
 def is_user_in_group(user, group):
-    print(f'Looking up in {group.name}')
+    if not all([user, group]) or not str in [type(user), type(group)]:
+        raise ValueError('Invalid user or group input.')
+
     is_member = False
 
     # lookup in cache first
@@ -135,8 +137,27 @@ if __name__ == "__main__":
         assert is_user_in_group(sub_child_user, child) == True
         assert is_user_in_group('non_existent', parent) == False
 
+    def test_case2():
+        parent = Group("parent")
 
-    for i, test in enumerate([test_case1,]):
+        try:
+            is_user_in_group('', parent)
+        except ValueError:
+            assert True
+        else:
+            raise AssertionError
+
+    def test_case3():
+        parent = Group("parent")
+
+        try:
+            is_user_in_group('', '')
+        except ValueError:
+            assert True
+        else:
+            raise AssertionError
+
+    for i, test in enumerate([test_case1, test_case2, test_case3]):
         try:
             test()
             print(f'Test {i+1}: Passed')

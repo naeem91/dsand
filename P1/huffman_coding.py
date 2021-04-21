@@ -212,7 +212,25 @@ if __name__ == "__main__":
         assert decoded_data == sentence
         assert sys.getsizeof(int(encoded_data, base=2)) < sys.getsizeof(sentence)
 
-    for i, test in enumerate([test_case1, test_case2, test_case3]):
+    def test_case4():
+        sentence = 'AAA'
+        encoded_data, tree = huffman_encoding(sentence)
+
+        decoded_data = huffman_decoding(encoded_data, tree)
+
+        assert decoded_data == sentence
+        assert sys.getsizeof(int(encoded_data, base=2)) < sys.getsizeof(sentence)
+
+    def test_case5():
+        sentence = ''
+        try:
+            encoded_data, tree = huffman_encoding(sentence)
+        except ValueError:
+            assert True
+        else:
+            raise AssertionError
+
+    for i, test in enumerate([test_case1, test_case2, test_case3, test_case4, test_case5]):
         try:
             test()
             print(f'Test {i+1}: Passed')

@@ -57,6 +57,9 @@ class Queue:
 
 class LRUCache:
     def __init__(self, capacity):
+        if type(capacity) != int or capacity <= 0:
+            raise ValueError('Invalid capacity given.')
+
         self.capacity = capacity
         self._cache = dict()
         self._eviction_queue = Queue()
@@ -129,7 +132,26 @@ if __name__ == "__main__":
         assert cache.get(1) == -1
         assert cache.get(2) == 2
 
-    for i, test in enumerate([test_case1, test_case2, test_case3]):
+    def test_case4():
+        try:
+            cache = LRUCache(-5)
+        except ValueError:
+            assert True
+        else:
+            raise AssertionError
+
+    def test_case5():
+        try:
+            cache = LRUCache('')
+        except ValueError:
+            assert True
+        else:
+            raise AssertionError
+
+
+    for i, test in enumerate([
+        test_case1, test_case2, test_case3, test_case4, test_case5
+    ]):
         try:
             test()
             print(f'Test {i+1}: Passed')
