@@ -28,6 +28,13 @@ on average = O(k) where k = unique character count
 
 huffman decoding = O(n)
 
+Space:
+Frequency map = O(k) where k no. of unique characters
+Nodes map = O(k)
+min Queue = O(k)
+wighted nodes are saved in list = O(k) where k is no. of nodes
+
+in worst case, space complexity = O(n)
 """
 
 import sys

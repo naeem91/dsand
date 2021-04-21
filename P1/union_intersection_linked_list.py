@@ -13,6 +13,8 @@ intersection => O(min(len(L1), len(L2))
 creating output => O(len(k))  where k = len of union set
 
 time complexity is of the linear order of input = O(n)
+
+space complexity is also linear = O(n)
 """
 
 class Node:

@@ -24,10 +24,16 @@ when a user's membership is changed.
 
 Complexity:
 
+Time:
 lookup in users set is constant = O(1)
 visiting each sub group is = O(n)
 
 overall the time complexity is proportional to total number of sub-groups to search = O(n)
+
+Space:
+For caching a user's groups, dict is used.
+
+so space complexity = O(k)  where k= no. of user groups
 """
 
 try:

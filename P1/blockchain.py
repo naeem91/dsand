@@ -6,7 +6,10 @@ the hash using block's data and hash of previous block.
 
 Complexity:
 
+Time:
 Adding blocks to blockchain is constant time operation = O(1)
+
+Space = 0(n)
 """
 
 import hashlib

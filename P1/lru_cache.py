@@ -12,6 +12,7 @@ All operations are constant time:
 Dict set, get and delete = O(1)
 Stack push and pop = O(1)
 
+Space complexity is O(k) where k is capacity of cache
 """
 class Stack:
     def __init__(self):

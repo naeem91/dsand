@@ -1,10 +1,16 @@
 """
 The search goes by DFS, all the files with suffix are added into a list.
 
+Complexity:
+
+Time:
 visiting paths = O(n)
 checking if a file path ends with suffix = O(1)
 
 overall it is proportional to no. of paths = O(n)
+
+Space = O(k) where k = paths ending with suffix
+
 """
 
 import os
