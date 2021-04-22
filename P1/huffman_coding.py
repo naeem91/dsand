@@ -19,12 +19,11 @@ Complexity:
 
 Time:
 each character in data is visited to find out frequency = O(n)
-min heap push and pop =  O(k) where k = unique character count
+min-heap push and pop =  O(nlog(n))
 assign values to nodes = O(k)
 encoding each character = O(n)
 
-In worst case huffman encoding = O(n)
-on average = O(k) where k = unique character count
+huffman encoding = O(nlog(n))
 
 huffman decoding = O(n)
 
