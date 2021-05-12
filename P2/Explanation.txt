@@ -1,0 +1,96 @@
+---------------------
+Problem 1: Finding the Square Root of an Integer
+---------------------
+
+We have to find a number who's product with itself is equal to integer.
+i.e. x * x = integer or x = integer // x
+
+The search goes like binary search by dividing the integer with middle of a range and moving pointers until
+we reach the sqrt.
+
+Time complexity = O(log(n))
+Space complexity = O(1) since we always have only two pointers to low and high numbers
+
+-------------------------
+Problem 2: Search in a Rotated Sorted Array
+-------------------------
+
+We first find the pivot where the array is rotated, it's a point where the array has the max element.
+Once the pivot is found, the number is either less than or equal to pivot, according to this we find in either
+left or right side of the pivot by binary search.
+
+Time complexity:
+    finding pivot = O(log(n))
+    finding number in subarray = O(log(n))
+
+    total = O(log(n))
+
+Space complexity = O(1)
+
+-------------------------
+Problem 3: Rearrange Array Elements
+-------------------------
+
+A max heap is built first and for each array element the max element of heap is placed alternatively in first and second
+number list. At the end the elements are converted to decimals.
+
+Time complexity = O(nlog(n))
+Space complexity = O(n) for holding the elements in lists
+
+---------------------------
+Problem 4: Dutch National Flag Problem
+---------------------------
+
+The list is divided into three buckets, bucket_0, bucket_1 and bucket_2. Each bucket is meant to hold either
+0s, 1s or 2s. In a single traversal, items are swapped and buckets indexes are moved accordingly.
+
+Time complexity = O(n)
+Space complexity = O(1)
+
+---------------------
+Problem 5: Autocomplete with Tries
+---------------------
+Trie is initialized with a root node. New words are inserted by looping over characters of word and either creating new
+nodes representing the character or placing it as child of existing ones. Leaf nodes are marked as words. The suffixes of a
+node are all child suffixes below the node.
+
+Time complexity:
+    insertion = O(n) where n is length of word
+    finding prefix = O(n) where n is length of prefix
+    getting suffixes:
+        looping over child = O(n)
+        concatenating suffix string = O(k) where k is length of suffix
+        extending suffixes list = O(n)
+
+        total = O(n)
+
+Space complexity:
+    storing child nodes = O(n)
+    holding suffixes = O(k) where k is length of suffixes
+
+---------------------------------
+Problem 6: Max and Min in a Unsorted Array
+---------------------------------
+Min and Max pointers are initialized with first and last elements of array. Then three items of array are read at a
+time and sorted. The min and max element are compared with the current Min and Max values and stored accordingly.
+After a single traversal the min and max in complete array get determined.
+
+Time complexity:
+    for each set of three elements, four comparisons happen.
+
+   comparison operations = (n / 3) * 4
+    in big O = O(n)
+
+Space complexity = O(1)
+
+---------------------------------
+Problem 7: HTTPRouter using a Trie
+---------------------------------
+HttpRouter uses a trie to keep nodes of path parts.
+
+Time complexity:
+    add handler = O(n) where n is length of path parts
+    lookup handler = O(n) where n is length of path parts
+
+Space complexity:
+    storing child nodes in trie = O(n)
